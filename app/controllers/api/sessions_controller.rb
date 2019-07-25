@@ -1,10 +1,15 @@
 class Api::SessionsController < ApplicationController
-    def new
-        render :new
-    end
-
     def create
-        # @user = User.find_by_credentials(params)
+        @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+        # debugger
+        if @user
+            login(@user)
+            render :create
+        else
+            # debugger;
+            @errors = ['Please check username or credentials fool']
+            render :errors, status: 400
+        end
     end
     
     def destroy
@@ -12,7 +17,8 @@ class Api::SessionsController < ApplicationController
             logout!    
             render :destroy
         else
-            render :not_found
+            @errors = ["Ain't nobody logged in"]
+            render :errors, status: 422
         end
     end
 
