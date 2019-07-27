@@ -13,7 +13,7 @@ export default (state = defaultState, action) => {
 
     switch (action.type) {
         case RECEIVE_USER:
-            return merge({}, state, action.user); 
+            return merge({}, { userId: action.user.id }); 
         case LOGOUT_CURRENT_USER:
             return merge({}, defaultState); 
         default:

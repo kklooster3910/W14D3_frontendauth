@@ -3,10 +3,10 @@ import App from './app';
 import React from 'react';
 import { Provider } from 'react-redux'
 
-const Root = ({ store }) => (
+const Root = ({ store }, loggedIn) => (
   <Provider store={ store }>
     <HashRouter>
-      <App/>
+      <App loggedIn={loggedIn}/>
     </HashRouter>
   </Provider>
 );

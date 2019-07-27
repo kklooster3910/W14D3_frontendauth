@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default ({ user, logout }) => {
     const display = user ? (
@@ -14,6 +15,6 @@ export default ({ user, logout }) => {
         );
     
     return <div>
-
+        {display}
     </div>
 }
